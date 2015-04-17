@@ -24,10 +24,16 @@ class AssetURLGenerator
         $url = $this->cachebusted($asset);
 
         $base = Config::get("cachebuster::cdn");
-        if ($base === '' && $absolute) {
-            $base = URL::to('/');
-        }
-        return $base . $url;
+
+				if(is_array($base)){
+					$base = $base[array_rand($base)];
+				}
+				else {
+					if ($base === '' && $absolute) {
+						$base = URL::to('/');
+					}
+				}
+				return $base . $url;
     }
 
     public function cachebusted($asset) {

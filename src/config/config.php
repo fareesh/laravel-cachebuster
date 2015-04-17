@@ -10,6 +10,12 @@ return array(
     | as "//abc0defgh1ij2.cloudfront.net" (omit the protocol so that http or
     | https will be selected automatically by the browser; and omit the
     | trailing slash because it's part of the asset URL that will be appended.)
+		| Creating an array of CDNs will pick a CDN at random at the time of
+		| generating the URL. This will allow you to parallelize downloads across
+		| domain names for better performance. 
+		|
+		| e.g. "cdn" => '//foo.com' OR
+		| e.g. "cdn" => array('//a1.foo.com','//a2.foo.com')
 	|--------------------------------------------------------------------------
 	*/
     "cdn" => '',
